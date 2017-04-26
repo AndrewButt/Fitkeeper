@@ -7,29 +7,30 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class MeVC: UIViewController {
 
+    @IBOutlet weak var userEmailLbl: UILabel!
+    
+    var userEmailLblText = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        userEmailLbl.text = userEmailLblText
+        userEmailLbl.text = "Hey now"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func signouttest(_ sender: Any) {
+        do {
+        try FIRAuth.auth()?.signOut()
+            self.dismiss(animated: true, completion: nil)
+            print("User did sign out")
+        } catch let error {
+            print("Error: ", error)
+        }
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
