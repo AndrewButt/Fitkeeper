@@ -15,30 +15,30 @@ class WelcomeVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        
+
         setupGoogleButton()
-        
-        
+
+
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         guard let FirebaseUserEmail = FIRAuth.auth()?.currentUser?.email else { return }
         if FIRAuth.auth()?.currentUser != nil {
             print("User is signed in.")
             print("User email: ", FirebaseUserEmail)
-            performSegue(withIdentifier: "toMeVC", sender: self)
+            performSegue(withIdentifier: SegueIdentifiers.toMeVC, sender: self)
         }
     }
-    
+
     @IBAction func createAccountPressed(_ sender: Any) {
         createUser()
     }
-    
+
     func createAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { (action) in
@@ -46,23 +46,23 @@ class WelcomeVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func setupGoogleButton() {
         GIDSignIn.sharedInstance().uiDelegate = self
         googleSignInButton.colorScheme = .light
         googleSignInButton.style = .wide
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField { passwordTextField.becomeFirstResponder() }
         else { createUser() }
         return true
     }
-    
+
     func createUser() {
         if let email = emailTextField.text, let password = passwordTextField.text {
             FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
@@ -74,6 +74,24 @@ class WelcomeVC: UIViewController, UITextFieldDelegate, GIDSignInUIDelegate {
                 print("User did sign up.")
                 print("User email: ", email)
             })
+        }
+    }
+
+
+    //Here is how you pass data between VC
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let id = segue.identifier else {
+            preconditionFailure("Segue should have a valid identifier")
+        }
+
+        if id == SegueIdentifiers.toMeVC {
+            guard let newVC = segue.destination as? MeVC, let username = FIRAuth.auth()?.currentUser?.displayName else {
+                print("Invalid Target VC")
+                return
+            }
+
+            newVC.userName = username
+            
         }
     }
 }

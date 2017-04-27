@@ -12,25 +12,26 @@ import FirebaseAuth
 class MeVC: UIViewController {
 
     @IBOutlet weak var userEmailLbl: UILabel!
-    
+
+    var userName: String! //This will be passed to this VC when loading
     var userEmailLblText = String()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         userEmailLbl.text = userEmailLblText
-        userEmailLbl.text = "Hey now"
+        userEmailLbl.text = "The current username is \(userName)"
     }
 
     @IBAction func signouttest(_ sender: Any) {
         do {
-        try FIRAuth.auth()?.signOut()
+            try FIRAuth.auth()?.signOut()
             self.dismiss(animated: true, completion: nil)
             print("User did sign out")
         } catch let error {
             print("Error: ", error)
         }
     }
-
-
+    
+    
 }

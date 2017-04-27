@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49D6A2B11EB22A450016FCCE /* Identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D6A2B01EB22A450016FCCE /* Identifiers.swift */; };
 		7CD6DF5C1EB0A274005F3FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CD6DF5B1EB0A274005F3FE4 /* AppDelegate.swift */; };
 		7CD6DF611EB0A274005F3FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6DF5F1EB0A274005F3FE4 /* Main.storyboard */; };
 		7CD6DF631EB0A274005F3FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD6DF621EB0A274005F3FE4 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		49D6A2B01EB22A450016FCCE /* Identifiers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Identifiers.swift; sourceTree = "<group>"; };
 		7CD6DF581EB0A274005F3FE4 /* Fitkeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fitkeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CD6DF5B1EB0A274005F3FE4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CD6DF601EB0A274005F3FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				7CD6DF6F1EB0A392005F3FE4 /* WelcomeVC.swift */,
 				7CD6DF711EB0A3A8005F3FE4 /* LogInVC.swift */,
 				7CD6DF751EB0A3BC005F3FE4 /* MeVC.swift */,
+				49D6A2B01EB22A450016FCCE /* Identifiers.swift */,
 				7CD6DF5B1EB0A274005F3FE4 /* AppDelegate.swift */,
 				7CD6DF5F1EB0A274005F3FE4 /* Main.storyboard */,
 				7CD6DF621EB0A274005F3FE4 /* Assets.xcassets */,
@@ -241,6 +244,7 @@
 				7CD6DF761EB0A3BC005F3FE4 /* MeVC.swift in Sources */,
 				7CD6DF5C1EB0A274005F3FE4 /* AppDelegate.swift in Sources */,
 				7CD6DF701EB0A392005F3FE4 /* WelcomeVC.swift in Sources */,
+				49D6A2B11EB22A450016FCCE /* Identifiers.swift in Sources */,
 				7CD6DF721EB0A3A8005F3FE4 /* LogInVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
